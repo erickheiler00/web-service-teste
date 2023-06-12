@@ -1,6 +1,6 @@
 const React = require('react')
 
-function indexPage(props){
+function IndexPage(props){
     return (
         <>
             <html lang="pt-br">
@@ -10,10 +10,12 @@ function indexPage(props){
                     <title>Livros</title>
                 </head>
                 <body>
-                    <h1>{props.tittle}</h1>
+                    <h1>{props.title}</h1>
                     <p>{props.message}</p>
                 </body>
             </html>
         </>
     )
 }
+
+module.exports = IndexPage

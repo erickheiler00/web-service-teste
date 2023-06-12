@@ -13,6 +13,6 @@ function LoopPage(props) {
             </ul>
         </>
     )
-}//<br> quebra de linha
+}
 
 module.exports = LoopPage
