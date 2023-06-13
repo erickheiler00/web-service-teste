@@ -17,8 +17,8 @@ app.engine('jsx', reactViews.createEngine())
 
 // rota padrao
 app.get('/', (req, res) => {
-    res.send('Hello World')
-    //res.render('index', { title: 'Livros API', message: 'teste' })
+    //res.send('Hello World')
+    res.render('index', { title: 'Livros API', message: 'teste' })
 })
 
 // rota loop

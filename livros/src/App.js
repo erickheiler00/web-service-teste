@@ -14,7 +14,7 @@ function TBody(props) {
   return (
     <tbody>
     {
-      props.livro.map(livro => {
+      props.livros?.map(livro => {
         return <TLine key={livro._id} livro={livro} />
       })
     }
@@ -36,20 +36,36 @@ function TLine(props) {
 }
 function App() {
   const [livro, setLivro] = useState([])
-
+/*
   useEffect(() => {
     fetch('http://localhost:3000/livro')
         .then(res => res.json())
         .then(data => setLivro(data))
   }, [])
+*/
+  useEffect(() => {
+  fetch('http://localhost:3000/livro', {
+    headers: {
+      Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoidXN1YXJpbzEiLCJleHAiOjE2ODcyODMyMTYyMTV9.fu3jl0ZPdlcdI9B0noh_YheTMUoEke5geLqYEtdKYjE'
+    }
+  })
+    .then(res => res.json())
+    .then(data => setLivro(data));
+}, []);
+
+/*
+  useEffect(() => {
+    console.log(livro)
+  }, [livro])
+*/
 
   return (
     <>
       <h1>Livros</h1>
-      <table id="target">
+      { livro && <table id="target">
           <THead livros={['ID', 'Título', 'Autor', 'Editora', 'Ano', 'Edição', 'Gênero']} />
           <TBody livros={livro} />
-      </table>
+      </table>}
     </>
   )
 }
